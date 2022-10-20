@@ -29,13 +29,13 @@ function App() {
     <ThemeProvider theme={theme}>
       <Box sx={{height:"100%"}}>
         <HashRouter>
-          <Web3Manager>
+          {/* <Web3Manager> */}
             <Switch>
               {routes.map(({ path, component, exact }) => (
                 <Route key={path} path={path} component={component} exact={exact} />
               ))}
             </Switch>
-          </Web3Manager>
+          {/* </Web3Manager> */}
         </HashRouter>
       </Box>
       <ToastContainer delay={4000}  position="bottom-right"/>
