@@ -5,6 +5,7 @@ import CardBack from './CardBack.jsx';
 import TraitCard from './TraitCard.jsx';
 import './GalaxisCard.css';
 import useContainerDimensions from './useContainerDimensions';
+import { BigNumber } from 'ethers';
 
 const GalaxisCard = ({
   metadata,
@@ -127,6 +128,22 @@ const GalaxisCard = ({
     }
 
   }, []);
+
+  const getVisibilityWithData = (item) => {
+    if (!(parseInt(item.status) === 1 || parseInt(item.status) === 2)) return false;
+    const currentTimeInSecondsUTC = Math.floor((new Date()).getTime() / 1000);
+    return currentTimeInSecondsUTC <= BigNumber.from(item.data.expiration).toNumber();
+  }
+ 
+  const getVisibilityWithoutData = (item) => {
+    return parseInt(item.status) === 1;
+  } 
+
+  const getVisibilityByProperty = (item) => {
+    if (item.hasOwnProperty("data")) return getVisibilityWithData(item);
+    return getVisibilityWithoutData(item);
+  }
+
   return (
     <>
       {loading && (
@@ -253,7 +270,7 @@ const GalaxisCard = ({
                       {metadata.traits.map((elem, metadataIndex) => (
                         elem.icon_url ?
                           <>
-                            {parseInt(elem.status)===1&&<div
+                            {getVisibilityByProperty(elem) &&<div
                               className='trait-holder'
                               key={metadataIndex}
                               onClick={(e) => {
