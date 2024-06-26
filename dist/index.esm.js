@@ -513,6 +513,7 @@ var GalaxisCard = function GalaxisCard(_ref) {
   }, []);
 
   var getVisibilityWithData = function getVisibilityWithData(item) {
+    if (!(parseInt(item.status) === 1 || parseInt(item.status) === 2)) return false;
     var currentTimeInSecondsUTC = Math.floor(new Date().getTime() / 1000);
     return currentTimeInSecondsUTC <= BigNumber.from(item.data.expiration).toNumber();
   };
