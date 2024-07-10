@@ -131,6 +131,7 @@ const GalaxisCard = ({
 
   const getVisibilityWithData = (item) => {
     if (!(parseInt(item.status) === 1 || parseInt(item.status) === 2)) return false;
+    if (BigNumber.from(item.data.expiration).toNumber() === 0) return true;
     const currentTimeInSecondsUTC = Math.floor((new Date()).getTime() / 1000);
     return currentTimeInSecondsUTC <= BigNumber.from(item.data.expiration).toNumber();
   }
