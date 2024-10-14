@@ -1,3 +1,24 @@
+@font-face {
+  font-family: 'bau';
+  src: local('poppins'), url(./assets/fonts/Poppins.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'poppins1';
+  src: local('poppins'), url(./assets/fonts/Poppins.ttf) format('truetype');
+}
+ 
+@font-face {
+  font-family: 'Poppins-semibold';
+  src: local('poppins-semibold'),
+    url(./assets/fonts/Poppins-SemiBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'poppins-medium';
+  src: local('poppins-medium'),
+    url(./assets/fonts/Poppins-Medium.ttf) format('truetype');
+} 
+
 .card-image-container{
   position: relative;
   /* min-height: 500px; */
@@ -257,7 +278,7 @@
   font-weight: 400;
   color: rgb(250, 250, 242);
   font-size: 36px;
-  font-family: Poppins-semibold;
+  font-family: Poppins-semibold, PoppinsSemiBold;
   line-height: 42px;
   text-align: center;
   width: fit-content;
